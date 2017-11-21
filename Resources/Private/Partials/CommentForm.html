@@ -1,0 +1,20 @@
+<div id="tx-ncusefulpages-comment-form">
+    <div class="heading"><f:translate key="Page.rate.addComment.{ratingAsLowerCamelCaseString}" /></div>
+
+    <f:render partial="FormErrors" />
+
+    <f:form action="create" controller="Comment" section="tx-ncusefulpages-pi1" objectName="{objectName}" object="{object}" arguments="{page: page}" method="POST" additionalParams="{thirdPartyParameters}">
+        <f:form.hidden property="rating" value="{rating}" />
+
+        <f:form.textarea property="content" id="tx-ncusefulpages-content" rows="8" cols="46" />
+
+        <div class="tx_ncusefulpages-comment-form-contactDataOptional"><f:translate key="Comment.form.contactDataOptional" /></div>
+
+        <label for="tx-ncusefulpages-authorName"><f:translate key="Comment.form.authorName" />:</label><f:form.textfield property="authorName" id="tx-ncusefulpages-authorName" maxlength="255" />
+        <label for="tx-ncusefulpages-authorEmail"><f:translate key="Comment.form.authorEmail" />:</label><f:form.textfield property="authorEmail" id="tx-ncusefulpages-authorEmail" maxlength="255" />
+
+        <!-- TODO: Add Captcha! http://typo3.org/extensions/repository/view/captcha_viewhelper (http://www.typo3forum.net/forum/typo3-4-x-fragen-probleme/55264-extbase-fluid-captcha.html) -->
+
+        <f:form.submit class="submit" value="{f:translate(key: 'Comment.form.submit', default: '[submit]')}" />
+    </f:form>
+</div>
