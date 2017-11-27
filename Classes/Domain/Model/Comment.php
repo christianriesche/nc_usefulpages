@@ -37,7 +37,7 @@ class Comment extends AbstractEntity {
 	 * @see \Netcreators\NcUsefulpages\Controller\AbstractController
 	 *
 	 * @var integer
-	 * @validate NotEmpty, NumberRange(startRange=1, endRange=3)
+	 * @validate NotEmpty, NumberRange(minimum=1, maximum=3)
 	 */
 	protected $rating;
 

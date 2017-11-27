@@ -3,8 +3,19 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_ncusefulpages_domain_model_comment'] = array(
-	'ctrl' => $TCA['tx_ncusefulpages_domain_model_comment']['ctrl'],
+return array(
+// 	'ctrl' => $TCA['tx_ncusefulpages_domain_model_comment']['ctrl'],
+    'ctrl' => array (
+        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment',
+        'label'				=> 'content',
+        'tstamp'            => 'tstamp',
+        'crdate'            => 'crdate',
+        'delete'            => 'deleted',
+        'enablecolumns'     => array (
+            // no 'hidden' field necessary for these comments, as they are a BE-only feature.
+        ),
+        'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('nc_usefulpages') . 'Resources/Public/Icons/tx_ncusefulpages_domain_model_comment.gif'
+    ),
 	'interface' => array(
 		'showRecordFieldList' => 'rating, content, author_name, author_email'
 	),

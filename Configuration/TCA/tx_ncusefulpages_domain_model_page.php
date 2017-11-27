@@ -3,8 +3,26 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_ncusefulpages_domain_model_page'] = array(
-	'ctrl' => $TCA['tx_ncusefulpages_domain_model_page']['ctrl'],
+return array(
+    'ctrl' => array (
+        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page',
+        'label' 			=> 'page_i_d',
+        'label_alt'			=> 'page_title',
+        'label_alt_force'	=> TRUE,
+        'tstamp' 			=> 'tstamp',
+        'crdate' 			=> 'crdate',
+        'versioningWS' 		=> 2,
+        'versioning_followPages'	=> TRUE,
+        'origUid' 			=> 't3_origuid',
+        'languageField' 	=> 'sys_language_uid',
+        'transOrigPointerField' 	=> 'l18n_parent',
+        'transOrigDiffSourceField' 	=> 'l18n_diffsource',
+        'delete' 			=> 'deleted',
+        'enablecolumns' 	=> array(
+            'disabled' => 'hidden'
+        ),
+        'iconfile' 			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('nc_usefulpages') . 'Resources/Public/Icons/tx_ncusefulpages_domain_model_page.gif'
+    ),
 	'interface' => array(
 		'showRecordFieldList'	=> 'page_i_d,page_title,page_u_r_l,page_parameters,useful,notuseful,undecided',
 	),

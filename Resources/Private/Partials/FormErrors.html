@@ -1,32 +1,19 @@
-<f:form.errors>
-    <div class="tx-ncusefulpages-form-errors">
-        <span class="heading"><f:translate key="error.errorsOccurred"></f:translate></span>
-        <ul>
-            <f:for each="{error.errors}" as="propertyErrors">
-                <f:if condition="{propertyErrors.errors}">
-                    <f:then>
-                        <f:for each="{propertyErrors.errors}" as="errorDetail">
-                            <li>
-                                <f:translate key="error.code.{errorDetail.code}" arguments="{0: '{f:translate(key: \'property.{propertyErrors.propertyName}\')}'}" htmlEscape="false">[{errorDetail.message} ({errorDetail.code})]</f:translate>
-                            </li>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <f:for each="{error.errors}" as="errorDetail">
-                            <f:if condition="{errorDetail.errors}">
-                                <f:then>
-
-                                </f:then>
-                                <f:else>
-                                    <li>
-                                        {errorDetail.message}
-                                    </li>
-                                </f:else>
-                            </f:if>
-                        </f:for>
-                    </f:else>
-                </f:if>
-            </f:for>
-        </ul>
-    </div>
-</f:form.errors>
+<f:form.validationResults>
+    <f:if condition="{validationResults.flattenedErrors}">
+        <div class="tx-ncusefulpages-form-errors">
+            <span class="heading"><f:translate
+                    key="error.errorsOccurred"></f:translate></span>
+            <ul>
+                <f:for each="{validationResults.flattenedErrors}"
+                    as="errors" key="propertyPath">
+                    <f:for each="{errors}" as="error">
+                        <li><f:translate
+                                key="error.code.{error.code}"
+                                htmlEscape="false">[{error.message} ({error.code})]</f:translate>
+                        </li>
+                    </f:for>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+</f:form.validationResults>
