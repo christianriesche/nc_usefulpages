@@ -9,8 +9,8 @@
         "typo3/cms": "~6.2 || ~7.6 || ~8.7"
     },
 	"replace" : {
-		"nc_uefulpages" : "self.version",
-		"typo3-ter/nc_uefulpages" : "self.version"
+		"nc_usefulpages" : "self.version",
+		"typo3-ter/nc_usefulpages" : "self.version"
 	},	
 	"autoload" : {
 		"psr-4" : {
