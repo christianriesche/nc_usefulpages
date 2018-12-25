@@ -19,7 +19,7 @@ return array(
         'enablecolumns' 	=> array(
             'disabled' => 'hidden'
         ),
-        'iconfile' 			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('nc_usefulpages') . 'Resources/Public/Icons/tx_ncusefulpages_domain_model_page.gif'
+        'iconfile' 			=> 'EXT:nc_usefulpages/Resources/Public/Icons/tx_ncusefulpages_domain_model_page.gif',
     ),
     'interface' => array(
         'showRecordFieldList'	=> 'page_i_d,page_title,page_u_r_l,page_parameters,useful,notuseful,undecided',

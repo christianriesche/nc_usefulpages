@@ -11,7 +11,7 @@ return array(
         'enablecolumns'     => array(
             // no 'hidden' field necessary for these comments, as they are a BE-only feature.
         ),
-        'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('nc_usefulpages') . 'Resources/Public/Icons/tx_ncusefulpages_domain_model_comment.gif'
+        'iconfile'          => 'EXT:nc_usefulpages/Resources/Public/Icons/tx_ncusefulpages_domain_model_comment.gif'
     ),
     'interface' => array(
         'showRecordFieldList' => 'rating, content, author_name, author_email'
