@@ -30,161 +30,170 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * A page comment
  */
-class Comment extends AbstractEntity {
+class Comment extends AbstractEntity
+{
+    /**
+     * User ratings are defined as constants 1 through 3.
+     * @see \Netcreators\NcUsefulpages\Controller\AbstractController
+     *
+     * @var integer
+     * @validate NotEmpty, NumberRange(minimum=1, maximum=3)
+     */
+    protected $rating;
 
-	/**
-	 * User ratings are defined as constants 1 through 3.
-	 * @see \Netcreators\NcUsefulpages\Controller\AbstractController
-	 *
-	 * @var integer
-	 * @validate NotEmpty, NumberRange(minimum=1, maximum=3)
-	 */
-	protected $rating;
+    /**
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $content;
 
-	/**
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $content;
+    /**
+     * @var string
+     * @validate StringLength(maximum=255)
+     */
+    protected $authorName;
 
-	/**
-	 * @var string
-	 * @validate StringLength(maximum=255)
-	 */
-	protected $authorName;
+    /**
+     * @var string
+     * @validate StringLength(maximum=255)
+     */
+    protected $authorEmail;
 
-	/**
-	 * @var string
-	 * @validate StringLength(maximum=255)
-	 */
-	protected $authorEmail;
+    /**
+     * Note: TYPO3 requires the fully qualified name of \Netcreators\NcUsefulpages\Domain\Model\Page
+     * for its persistence layer!
+     *
+     * @var \Netcreators\NcUsefulpages\Domain\Model\Page
+     */
+    protected $page;
 
-	/**
-	 * Note: TYPO3 requires the fully qualified name of \Netcreators\NcUsefulpages\Domain\Model\Page
-	 * for its persistence layer!
-	 *
-	 * @var \Netcreators\NcUsefulpages\Domain\Model\Page
-	 */
-	protected $page;
+    /**
+     * Sets the commenter's page rating for this comment
+     *
+     * @param integer $rating
+     *
+     * @return self Returning itself for method call chaining.
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
 
-	/**
-	 * Sets the commenter's page rating for this comment
-	 *
-	 * @param integer $rating
-	 *
-	 * @return self Returning itself for method call chaining.
-	 */
-	public function setRating($rating) {
-		$this->rating = $rating;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Getter for rating
+     *
+     * @return integer
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
 
-	/**
-	 * Getter for rating
-	 *
-	 * @return integer
-	 */
-	public function getRating() {
-		return $this->rating;
-	}
+    /**
+     * Sets the content for this comment
+     *
+     * @param string $content
+     *
+     * @return self Returning itself for method call chaining.
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
 
-	/**
-	 * Sets the content for this comment
-	 *
-	 * @param string $content
-	 *
-	 * @return self Returning itself for method call chaining.
-	 */
-	public function setContent($content) {
-		$this->content = $content;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Getter for content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
 
-	/**
-	 * Getter for content
-	 *
-	 * @return string
-	 */
-	public function getContent() {
-		return $this->content;
-	}
+    /**
+     * Sets this comment's author's name
+     *
+     * @param string $authorName
+     *
+     * @return self Returning itself for method call chaining.
+     */
+    public function setAuthorName($authorName)
+    {
+        $this->authorName = $authorName;
 
-	/**
-	 * Sets this comment's author's name
-	 *
-	 * @param string $authorName
-	 *
-	 * @return self Returning itself for method call chaining.
-	 */
-	public function setAuthorName($authorName) {
-		$this->authorName = $authorName;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Getter for authorName
+     *
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->authorName;
+    }
 
-	/**
-	 * Getter for authorName
-	 *
-	 * @return string
-	 */
-	public function getAuthorName() {
-		return $this->authorName;
-	}
+    /**
+     * Sets this comment's author's e-mail address
+     *
+     * @param string $authorEmail
+     *
+     * @return self Returning itself for method call chaining.
+     */
+    public function setAuthorEmail($authorEmail)
+    {
+        $this->authorEmail = $authorEmail;
 
-	/**
-	 * Sets this comment's author's e-mail address
-	 *
-	 * @param string $authorEmail
-	 *
-	 * @return self Returning itself for method call chaining.
-	 */
-	public function setAuthorEmail($authorEmail) {
-		$this->authorEmail = $authorEmail;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Getter for authorEmail
+     *
+     * @return string
+     */
+    public function getAuthorEmail()
+    {
+        return $this->authorEmail;
+    }
 
-	/**
-	 * Getter for authorEmail
-	 *
-	 * @return string
-	 */
-	public function getAuthorEmail() {
-		return $this->authorEmail;
-	}
+    /**
+     * Setter for page
+     *
+     * @param Page $page
+     *
+     * @return self Returning itself for method call chaining.
+     */
+    public function setPage(Page $page=null)
+    {
+        $this->page = $page;
 
-	/**
-	 * Setter for page
-	 *
-	 * @param Page $page
-	 *
-	 * @return self Returning itself for method call chaining.
-	 */
-	public function setPage(Page $page=NULL) {
-		$this->page = $page;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Getter for page
+     *
+     * @return Page
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
 
-	/**
-	 * Getter for page
-	 *
-	 * @return Page
-	 */
-	public function getPage() {
-		return $this->page;
-	}
-
-	/**
-	 * Returns this comment as a formatted string
-	 *
-	 * @return string
-	 */
-	public function __toString() {
-		return $this->content;
-	}
+    /**
+     * Returns this comment as a formatted string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->content;
+    }
 }
-
-?>
