@@ -3,7 +3,7 @@
 *  Copyright notice
 *
 *  (c) 2011 Carmen Popoviciu <carmen@netcreators.com>, Netcreators
-*  			
+*
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -35,30 +35,29 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PageRepository extends Repository {
+class PageRepository extends Repository
+{
+    /**
+     * Find one Page by PageID and Parameters.
+     *
+     * @param integer	$pageID
+     * @param string	$normalizedParameterString
+     *
+     * @return Page|null
+     */
+    public function findOneByPageIDAndParameters($pageID, $normalizedParameterString)
+    {
+        $query = $this->createQuery();
+        $page = $query->matching(
+            $query->logicalAnd(
+                $query->equals('pageID', $pageID),
+                $query->equals('pageParameters', $normalizedParameterString)
+            )
+        )
+        ->setLimit(1)
+        ->execute()
+        ->getFirst();
 
-	/**
-	 * Find one Page by PageID and Parameters.
-	 *
-	 * @param integer	$pageID
-	 * @param string	$normalizedParameterString
-	 *
-	 * @return Page|null
-	 */
-	public function findOneByPageIDAndParameters($pageID, $normalizedParameterString) {
-
-		$query = $this->createQuery();
-		$page = $query->matching(
-			$query->logicalAnd(
-				$query->equals('pageID', $pageID),
-				$query->equals('pageParameters', $normalizedParameterString)
-			)
-		)
-		->setLimit(1)
-		->execute()
-		->getFirst();
-		return $page;
-	}
+        return $page;
+    }
 }
-
-?>

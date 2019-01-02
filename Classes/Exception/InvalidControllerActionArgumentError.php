@@ -24,32 +24,32 @@
 
 namespace Netcreators\NcUsefulpages\Exception;
 
-class InvalidControllerActionArgumentError extends \Exception {
-	/**
-	 * @var string
-	 */
-	var $argumentName = '';
+class InvalidControllerActionArgumentError extends \Exception
+{
+    /**
+     * @var string
+     */
+    public $argumentName = '';
 
-	/**
-	 * Constructor
-	 *
-	 * @param string $argumentName
-	 */
-	public function __construct($argumentName) {
-		parent::__construct('Controller Action Argument ' . $argumentName . ' is invalid.');
+    /**
+     * Constructor
+     *
+     * @param string $argumentName
+     */
+    public function __construct($argumentName)
+    {
+        parent::__construct('Controller Action Argument ' . $argumentName . ' is invalid.');
 
-		$this->argumentName = $argumentName;
-	}
+        $this->argumentName = $argumentName;
+    }
 
-	/**
-	 * Returns the invalid argument's name
-	 *
-	 * @return string
-	 */
-	public function getArgumentName() {
-		return $this->getArgumentName();
-	}
+    /**
+     * Returns the invalid argument's name
+     *
+     * @return string
+     */
+    public function getArgumentName()
+    {
+        return $this->getArgumentName();
+    }
 }
-
-
-?>

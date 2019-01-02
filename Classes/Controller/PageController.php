@@ -25,6 +25,7 @@
 ***************************************************************/
 
 namespace Netcreators\NcUsefulpages\Controller;
+
 use Netcreators\NcUsefulpages\Domain\Model\Page;
 use Netcreators\NcUsefulpages\Domain\Repository\PageRepository;
 use Netcreators\NcUsefulpages\Exception\InvalidControllerActionArgumentError;
@@ -42,255 +43,238 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 
-class PageController extends AbstractController {
+class PageController extends AbstractController
+{
+    /**
+     * Note: TYPO3 requires the fully qualified name for automatic injection!
+     *
+     * @var \Netcreators\NcUsefulpages\Domain\Repository\PageRepository
+     * @inject
+     */
+    protected $pageRepository;
 
+    /**
+     * Index action (default action).
+     *
+     * @return void
+     */
+    public function indexAction()
+    {
+        /** @var TypoScriptFrontendController $TSFE */
+        global $TSFE;
 
-	/**
-	 * Note: TYPO3 requires the fully qualified name for automatic injection!
-	 *
-	 * @var \Netcreators\NcUsefulpages\Domain\Repository\PageRepository
-	 * @inject
-	 */
-	protected $pageRepository;
+        // Assign page ID of the current page.
+        $this->view->assign('pageID', $TSFE->id);
 
+        // Assign URL of the current page.
+        $this->view->assign('pageURL', $this->getPageURL());
 
-	/**
-	 * Index action (default action).
-	 *
-	 * @return void
-	 */
-	public function indexAction() {
-		/** @var TypoScriptFrontendController $TSFE */
-		global $TSFE;
+        // Assign title of the current page.
+        $this->view->assign('pageTitle', $TSFE->page['title']);
 
-		// Assign page ID of the current page.
-		$this->view->assign('pageID', 				$TSFE->id);
+        // Assign ratings
+        $this->view->assign('ratingUseful', self::RATING_USEFUL);
+        $this->view->assign('ratingNotUseful', self::RATING_NOT_USEFUL);
+        $this->view->assign('ratingUndecided', self::RATING_UNDECIDED);
 
-		// Assign URL of the current page.
-		$this->view->assign('pageURL', 				$this->getPageURL());
+        // Assign parameters of 3rd parties (TYPO3 CMS and other extensions) to forward and store with the rating.
+        $this->view->assign('thirdPartyParameters', $this->get3rdPartyParameters());
+    }
 
-		// Assign title of the current page.
-		$this->view->assign('pageTitle', 			$TSFE->page['title']);
+    /**
+     * Rate action.
+     *
+     * @return void
+     */
+    public function rateAction()
+    {
+        // Sanitize and validate incoming values.
+        try {
+            $pageID 	= $this->sanitizeIncoming('pageID', 'integer');
+            $pageURL	= $this->sanitizeIncoming('pageURL', 'string');
+            $pageTitle 	= $this->sanitizeIncoming('pageTitle', 'string');
+            $rating		= $this->sanitizeIncoming('rating', 'integer');
+        } catch (MissingControllerActionArgumentError $exception) {
+            $this->addFlashMessage(
+                $exception->getMessage(),
+                'Missing Controller Action Argument',
+                FlashMessage::ERROR
+            );
 
-		// Assign ratings
-		$this->view->assign('ratingUseful',			self::RATING_USEFUL);
-		$this->view->assign('ratingNotUseful',		self::RATING_NOT_USEFUL);
-		$this->view->assign('ratingUndecided',		self::RATING_UNDECIDED);
+            /** @throws StopActionException */
+            $this->redirectWith3rdPartyParameters(
+                'index',
+                array(),
+                $this->get3rdPartyParameters(),
+                'tx-ncusefulpages-pi1'
+            );
 
-		// Assign parameters of 3rd parties (TYPO3 CMS and other extensions) to forward and store with the rating.
-		$this->view->assign('thirdPartyParameters',	$this->get3rdPartyParameters());
-	}
+            // This return is never called.
+            // It is just here for code flow clarity.
+            // Also, it stops PHPStorm from complaining below about $pageID, $pageTitle, $pageURL and $rating
+            // *possibly* not having been defined yet.
+            return;
+        }
 
+        $this->validateIncomingRating($rating);
 
-	/**
-	 * Rate action.
-	 *
-	 * @return void
-	 */
-	public function rateAction(){
+        // Page rating records are identified by page ID and a normalized string of all GET parameters involved
+        $normalizedParameterString = $this->getNormalizedParameterString($this->get3rdPartyParameters());
 
-		// Sanitize and validate incoming values.
-		try {
-			$pageID 	= $this->sanitizeIncoming('pageID', 	'integer');
-			$pageURL	= $this->sanitizeIncoming('pageURL', 	'string');
-			$pageTitle 	= $this->sanitizeIncoming('pageTitle', 	'string');
-			$rating		= $this->sanitizeIncoming('rating',		'integer');
+        // Find the page in the repository and update it. Create a new one if none matches.
 
-		} catch(MissingControllerActionArgumentError $exception) {
+        /** @var Page $page */
+        $page = $this->pageRepository->findOneByPageIDAndParameters(
+            $pageID,
+            $normalizedParameterString
+        );
 
-			$this->addFlashMessage(
-				$exception->getMessage(),
-				'Missing Controller Action Argument',
-				FlashMessage::ERROR
-			);
+        if (is_null($page)) {
 
-			/** @throws StopActionException */
-			$this->redirectWith3rdPartyParameters(
-				'index',
-				array(),
-				$this->get3rdPartyParameters(),
-				'tx-ncusefulpages-pi1'
-			);
+            // Create a new page record.
+            $page = new Page();
+            $page->setPageID($pageID)
+                ->setPageURL($pageURL)
+                ->setPageTitle($pageTitle)
+                ->setPageParameters($normalizedParameterString)
+                ->updateRating($rating);
 
-			// This return is never called.
-			// It is just here for code flow clarity.
-			// Also, it stops PHPStorm from complaining below about $pageID, $pageTitle, $pageURL and $rating
-			// *possibly* not having been defined yet.
-			return;
-		}
+            $this->pageRepository->add($page);
 
-		$this->validateIncomingRating($rating);
+            // Need to persist the newly created page to assign it a UID.
+            // Otherwise Tx_Extbase_MVC_Web_Routing_UriBuilder::convertDomainObjectsToIdentityArrays() called through
+            // $this->redirectWith3rdPartyParameters() with $page as argument will fail:
+            // 		#1260881688: Could not serialize Domain Object \Netcreators\NcUsefulpages\Domain\Model\Page.
+            // 		It is neither an Entity with identity properties set, nor a Value Object.
 
-		// Page rating records are identified by page ID and a normalized string of all GET parameters involved
-		$normalizedParameterString = $this->getNormalizedParameterString($this->get3rdPartyParameters());
+            /** @var PersistenceManager $persistenceManager */
+            $persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+            $persistenceManager->persistAll();
+        } else {
 
-		// Find the page in the repository and update it. Create a new one if none matches.
+            // Update the existing page.
+            $page->updateRating($rating);
+            $this->pageRepository->update($page);
+        }
 
-		/** @var Page $page */
-		$page = $this->pageRepository->findOneByPageIDAndParameters(
-			$pageID,
-			$normalizedParameterString
-		);
+        $this->redirectToConfirmationPageIfConfigured($rating);
 
-		if(is_null($page)) {
+        $this->redirectWith3rdPartyParameters(
+            'rated',
+            array(
+                'page' => $page,
+                'rating' => $rating
+            ),
+            $this->get3rdPartyParameters(),
+            'tx-ncusefulpages-pi1'
+        );
+    }
 
-			// Create a new page record.
-			$page = new Page();
-			$page->setPageID($pageID)
-				->setPageURL($pageURL)
-				->setPageTitle($pageTitle)
-				->setPageParameters($normalizedParameterString)
-				->updateRating($rating);
+    /**
+     * Rated action.
+     *
+     * @param Page $page
+     *
+     * @return void
+     */
+    public function ratedAction(Page $page)
+    {
+        // Sanitize and validate incoming value.
+        try {
+            $rating = $this->sanitizeIncoming('rating', 'integer');
+        } catch (MissingControllerActionArgumentError $exception) {
+            $this->addFlashMessage(
+                $exception->getMessage(),
+                'Missing Controller Action Argument',
+                FlashMessage::ERROR
+            );
 
-			$this->pageRepository->add($page);
+            /** @throws StopActionException */
+            $this->redirectWith3rdPartyParameters(
+                'index',
+                array(),
+                $this->get3rdPartyParameters(),
+                'tx-ncusefulpages-pi1'
+            );
 
-			// Need to persist the newly created page to assign it a UID.
-			// Otherwise Tx_Extbase_MVC_Web_Routing_UriBuilder::convertDomainObjectsToIdentityArrays() called through
-			// $this->redirectWith3rdPartyParameters() with $page as argument will fail:
-			// 		#1260881688: Could not serialize Domain Object \Netcreators\NcUsefulpages\Domain\Model\Page.
-			// 		It is neither an Entity with identity properties set, nor a Value Object.
+            // This return is never called.
+            // It is just here for code flow clarity.
+            // Also, it stops PHPStorm from complaining below about $rating
+            // *possibly* not having been defined yet.
+            return;
+        }
 
-			/** @var PersistenceManager $persistenceManager */
-			$persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
-			$persistenceManager->persistAll();
+        $this->validateIncomingRating($rating);
 
-		} else {
+        $this->assignTemplateToggleByRating('showCommentForm', $rating);
 
-			// Update the existing page.
-			$page->updateRating($rating);
-			$this->pageRepository->update($page);
-		}
+        $this->assignTemplateToggleByRating('showContactLink', $rating);
 
-		$this->redirectToConfirmationPageIfConfigured($rating);
+        $this->view
+            ->assign('page', $page)
+            ->assign('rating', $rating)
+            ->assign('ratingAsLowerCamelCaseString', $this->getRatingAsString($rating, false))
+            ->assign('thirdPartyParameters', $this->get3rdPartyParameters());
+    }
 
-		$this->redirectWith3rdPartyParameters(
-			'rated',
-			array(
-				'page' => $page,
-				'rating' => $rating
-			),
-			$this->get3rdPartyParameters(),
-			'tx-ncusefulpages-pi1'
-		);
-	}
+    /**
+     * Gets the current page URL.
+     *
+     * @return string
+     */
+    protected function getPageURL()
+    {
+        $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false ? 'http' : 'https';
 
+        $pageURL = $protocol. '://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-	/**
-	 * Rated action.
-	 *
-	 * @param Page $page
-	 *
-	 * @return void
-	 */
-	public function ratedAction(Page $page) {
+        return $pageURL;
+    }
 
-		// Sanitize and validate incoming value.
-		try {
-			$rating = $this->sanitizeIncoming('rating', 'integer');
+    /**
+     * Redirects to the 'rated useful' / 'rated not useful' page, if such pages are configured.
+     *
+     * @param integer $rating
+     *
+     * @return void
+     */
+    protected function redirectToConfirmationPageIfConfigured($rating)
+    {
+        $redirectToPID = (int)$this->getTypoScriptSettingByRating('redirectToPid', $rating);
 
-		} catch(MissingControllerActionArgumentError $exception) {
+        if ($redirectToPID) {
+            $this->redirectToURI("/?id=" . $redirectToPID);
+        }
+    }
 
-			$this->addFlashMessage(
-				$exception->getMessage(),
-				'Missing Controller Action Argument',
-				FlashMessage::ERROR
-			);
+    /**
+     * Validates the incoming rating Controller Action argument.
+     *
+     * @param integer	$rating
+     *
+     * @return void
+     */
+    protected function validateIncomingRating($rating)
+    {
+        try {
+            $this->validateIncomingInSet('rating', $rating, array(
+                self::RATING_USEFUL,
+                self::RATING_NOT_USEFUL,
+                self::RATING_UNDECIDED
+            ));
+        } catch (InvalidControllerActionArgumentError $exception) {
+            $this->addFlashMessage(
+                $exception->getMessage(),
+                'Invalid Controller Action Argument',
+                FlashMessage::ERROR
+            );
 
-			/** @throws StopActionException */
-			$this->redirectWith3rdPartyParameters(
-				'index',
-				array(),
-				$this->get3rdPartyParameters(),
-				'tx-ncusefulpages-pi1'
-			);
-
-			// This return is never called.
-			// It is just here for code flow clarity.
-			// Also, it stops PHPStorm from complaining below about $rating
-			// *possibly* not having been defined yet.
-			return;
-		}
-
-		$this->validateIncomingRating($rating);
-
-		$this->assignTemplateToggleByRating('showCommentForm', $rating);
-
-		$this->assignTemplateToggleByRating('showContactLink', $rating);
-
-		$this->view
-			->assign('page', $page)
-			->assign('rating', $rating)
-			->assign('ratingAsLowerCamelCaseString', $this->getRatingAsString($rating, FALSE))
-			->assign('thirdPartyParameters', $this->get3rdPartyParameters());
-	}
-
-
-	/**
-	 * Gets the current page URL.
-	 *
-	 * @return string
-	 */
-	protected function getPageURL() {
-		$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === FALSE ? 'http' : 'https';
-
-		$pageURL = $protocol. '://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
-		return $pageURL;
-	}
-
-
-	/**
-	 * Redirects to the 'rated useful' / 'rated not useful' page, if such pages are configured.
-	 *
-	 * @param integer $rating
-	 *
-	 * @return void
-	 */
-	protected function redirectToConfirmationPageIfConfigured($rating) {
-
-		$redirectToPID = (int)$this->getTypoScriptSettingByRating('redirectToPid', $rating);
-
-		if($redirectToPID) {
-			$this->redirectToURI("/?id=" . $redirectToPID);
-		}
-	}
-
-
-	/**
-	 * Validates the incoming rating Controller Action argument.
-	 *
-	 * @param integer	$rating
-	 *
-	 * @return void
-	 */
-	protected function validateIncomingRating($rating) {
-
-		try {
-
-			$this->validateIncomingInSet('rating', $rating, array(
-				self::RATING_USEFUL,
-				self::RATING_NOT_USEFUL,
-				self::RATING_UNDECIDED
-			));
-
-		} catch	(InvalidControllerActionArgumentError $exception) {
-
-			$this->addFlashMessage(
-				$exception->getMessage(),
-				'Invalid Controller Action Argument',
-				FlashMessage::ERROR
-			);
-
-			$this->redirectWith3rdPartyParameters(
-				'index',
-				array(),
-				$this->get3rdPartyParameters(),
-				'tx-ncusefulpages-pi1'
-			);
-		}
-
-	}
-
+            $this->redirectWith3rdPartyParameters(
+                'index',
+                array(),
+                $this->get3rdPartyParameters(),
+                'tx-ncusefulpages-pi1'
+            );
+        }
+    }
 }
-
-?>
