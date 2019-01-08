@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="Page.index.rateThisPage">
+				<target state="translated">Beoordeel deze pagina</target>
+			</trans-unit>
+			<trans-unit id="Page.index.useful">
+				<target state="translated">Ja</target>
+			</trans-unit>
+			<trans-unit id="Page.index.notUseful">
+				<target state="translated">Nee</target>
+			</trans-unit>
+			<trans-unit id="Page.index.undecided">
+				<target state="translated">Dit is niet wat ik zocht</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.thankYouForRating">
+				<target state="translated">Bedankt voor uw input.</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.notUseful">
+				<target state="translated">Wat was er onduidelijk of kan naar uw mening verbeterd worden?</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.undecided">
+				<target state="translated">Welke informatie zocht je?</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.goBack">
+				<target state="translated">Ga een stap terug</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.askAnEmployee">
+				<target state="translated">Stel je vraag aan een medewerker</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.submit">
+				<target state="translated">Versturen</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.contactDataOptional">
+				<target state="translated">Indien u een reactie wilt ontvangen graag uw naam en e-mailadres invullen.</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorName">
+				<target state="translated">Uw naam</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorEmail">
+				<target state="translated">Uw e-mail adres</target>
+			</trans-unit>
+			<trans-unit id="Rating">
+				<target state="translated">Beoordeling</target>
+			</trans-unit>
+			<trans-unit id="Rating.useful">
+				<target state="translated">Nuttig</target>
+			</trans-unit>
+			<trans-unit id="Rating.notUseful">
+				<target state="translated">Niet nuttig</target>
+			</trans-unit>
+			<trans-unit id="Rating.undecided">
+				<target state="translated">Onbeslist</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created.title">
+				<target state="translated">Opmerking verzonden</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created">
+				<target state="translated">Uw reactie is aan onze medewerkers verzonden.</target>
+			</trans-unit>
+			<trans-unit id="error.errorsOccurred">
+				<target state="translated">Er zijn volgende fouten:</target>
+			</trans-unit>
+			<trans-unit id="error.Page.indexAction">
+				<target state="translated">Kon de widget voor pagina beoordeling niet weergegeven.</target>
+			</trans-unit>
+			<trans-unit id="error.Page.rateAction">
+				<target state="translated">Kon u beoordeling over deze pagina niet opslaan.</target>
+			</trans-unit>
+			<trans-unit id="error.Comment.createAction">
+				<target state="translated">Kon je reactie niet opslaan.</target>
+			</trans-unit>
+			<trans-unit id="error.code.1221560718">
+				<target state="translated">De &lt;strong&gt;%s&lt;/strong&gt; veld mag niet leeg zijn!</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

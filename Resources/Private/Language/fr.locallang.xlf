@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="Page.index.rateThisPage">
+				<target state="translated">Ce contenu vous a-t-il été utile ?</target>
+			</trans-unit>
+			<trans-unit id="Page.index.honeyPot">
+				<target state="translated">Ne pas remplir :</target>
+			</trans-unit>
+			<trans-unit id="Page.index.useful">
+				<target state="translated">Oui</target>
+			</trans-unit>
+			<trans-unit id="Page.index.notUseful">
+				<target state="translated">Non</target>
+			</trans-unit>
+			<trans-unit id="Page.index.undecided">
+				<target state="translated">Indécis</target>
+			</trans-unit>
+			<trans-unit id="Page.index.submit">
+				<target state="translated">Valider</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.alreadyRated">
+				<target state="translated">Votre vote a déjà été soumis.</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.thankYouForRating">
+				<target state="translated">Merci d'avoir noté cette page</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.notUseful">
+				<target state="translated">Ce qui était clair ou pourrait être amélioré ?</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.undecided">
+				<target state="translated">Qu'est-ce que vous cherchez?</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.goBack">
+				<target state="translated">Retour à la page</target>
+			</trans-unit>
+			<trans-unit id="Page.rate.askAnEmployee">
+				<target state="translated">Demander directement l'un de nos employés</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.submit">
+				<target state="translated">Envoyer</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.contactDataOptional">
+				<target state="translated">Si vous souhaitez recevoir une réaction de notre part, s'il vous plaît entrer également votre nom et votre adresse e-mail</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorName">
+				<target state="translated">Nom</target>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorEmail">
+				<target state="translated">E-Mail</target>
+			</trans-unit>
+			<trans-unit id="Rating">
+				<target state="translated">Fr Rating</target>
+			</trans-unit>
+			<trans-unit id="Rating.useful">
+				<target state="translated">Fr Useful</target>
+			</trans-unit>
+			<trans-unit id="Rating.notUseful">
+				<target state="translated">Fr Not useful</target>
+			</trans-unit>
+			<trans-unit id="Rating.undecided">
+				<target state="translated">Fr Undecided</target>
+			</trans-unit>
+			<trans-unit id="Rating.honeypot">
+				<target state="translated">Si vous êtes humain, ne remplissez pas ce champ !</target>
+			</trans-unit>
+			<trans-unit id="Rating.alreadyRated">
+				<target state="translated">Vous avez déjà voté sur cette page.</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created.title">
+				<target state="translated">Votre commentaire a été envoyé</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created">
+				<target state="translated">Votre commentaire a été envoyé</target>
+			</trans-unit>
+			<trans-unit id="error.errorsOccurred">
+				<target state="translated">Les erreurs suivantes sont survenues :</target>
+			</trans-unit>
+			<trans-unit id="error.Page.indexAction">
+				<target state="translated">Impossible d'afficher le module de notation de la page.</target>
+			</trans-unit>
+			<trans-unit id="error.Page.rateAction">
+				<target state="translated">Impossible de noter la page.</target>
+			</trans-unit>
+			<trans-unit id="error.Comment.createAction">
+				<target state="translated">Impossible de créer votre commentaire.</target>
+			</trans-unit>
+			<trans-unit id="error.code.1221560718">
+				<target state="translated">Le champ &lt;strong&gt;%s&lt;/strong&gt; est obligatoire !</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
