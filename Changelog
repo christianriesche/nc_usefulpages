@@ -1,5 +1,6 @@
 2019-01-08 2.1.1 Dmytro Nozdrin <public.team.osi@gmail.com>
     * Fixed translations.
+    * Fixed f:translate ViewHelper obsolete property usage.
     * Added change to the ChangeLog.
 
 2019-12-25 2.1.0 Dmytro Nozdrin <public.team.osi@gmail.com>
