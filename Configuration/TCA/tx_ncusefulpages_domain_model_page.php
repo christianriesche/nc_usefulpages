@@ -3,7 +3,7 @@ defined('TYPO3_MODE') || die;
 
 return array(
     'ctrl' => array(
-        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page',
+        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page',
         'label' 			=> 'page_i_d',
         'label_alt'			=> 'page_title',
         'label_alt_force'	=> true,
@@ -78,7 +78,7 @@ return array(
         ),
         'page_i_d' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.page_i_d',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.page_i_d',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 4,
@@ -87,7 +87,7 @@ return array(
         ),
         'page_title' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.page_title',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.page_title',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 30,
@@ -96,7 +96,7 @@ return array(
         ),
         'page_u_r_l' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.page_u_r_l',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.page_u_r_l',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 30,
@@ -105,7 +105,7 @@ return array(
         ),
         'page_parameters' => array(
             'exclude' => 1,
-            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.page_parameters',
+            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.page_parameters',
             'config'  => array(
                 'type' => 'text',
                 'rows' => 5,
@@ -114,7 +114,7 @@ return array(
         ),
         'useful' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.useful',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.useful',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 4,
@@ -123,7 +123,7 @@ return array(
         ),
         'notuseful' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.notUseful',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.notUseful',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 4,
@@ -132,7 +132,7 @@ return array(
         ),
         'undecided' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.undecided',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.undecided',
             'config'	=> array(
                 'type' => 'input',
                 'size' => 4,
@@ -141,7 +141,7 @@ return array(
         ),
         'comments' => array(
             'exclude' => 1,
-            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.comments',
+            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.comments',
             'config' => array(
                 'type' => 'inline',
                 'foreign_table' => 'tx_ncusefulpages_domain_model_comment',

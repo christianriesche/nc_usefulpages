@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="Page.index.rateThisPage">
+				<source>Rate this page</source>
+			</trans-unit>
+			<trans-unit id="Page.index.useful">
+				<source>Useful</source>
+			</trans-unit>
+			<trans-unit id="Page.index.notUseful">
+				<source>Not useful</source>
+			</trans-unit>
+			<trans-unit id="Page.index.undecided">
+				<source>This is not what I was looking for</source>
+			</trans-unit>
+			<trans-unit id="Page.rate.thankYouForRating">
+				<source>Thank you for rating this page.</source>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.notUseful">
+				<source>What was unclear or could be improved?</source>
+			</trans-unit>
+			<trans-unit id="Page.rate.addComment.undecided">
+				<source>What were you looking for?</source>
+			</trans-unit>
+			<trans-unit id="Page.rate.goBack">
+				<source>Go one step back</source>
+			</trans-unit>
+			<trans-unit id="Page.rate.askAnEmployee">
+				<source>Directly ask one of our employees</source>
+			</trans-unit>
+			<trans-unit id="Comment.form.submit">
+				<source>Send</source>
+			</trans-unit>
+			<trans-unit id="Comment.form.contactDataOptional">
+				<source>If you would like to receive a reaction from us, please also enter your name and e-mail address.</source>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorName">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="Comment.form.authorEmail">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="Rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="Rating.useful">
+				<source>Useful</source>
+			</trans-unit>
+			<trans-unit id="Rating.notUseful">
+				<source>Not useful</source>
+			</trans-unit>
+			<trans-unit id="Rating.undecided">
+				<source>Undecided</source>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created.title">
+				<source>Comment sent</source>
+			</trans-unit>
+			<trans-unit id="flashMessage.Comment.created">
+				<source>Your comment has been sent!</source>
+			</trans-unit>
+			<trans-unit id="error.errorsOccurred">
+				<source>Following errors occurred:</source>
+			</trans-unit>
+			<trans-unit id="error.Page.indexAction">
+				<source>Could not render page rating widget.</source>
+			</trans-unit>
+			<trans-unit id="error.Page.rateAction">
+				<source>Could not rate the page.</source>
+			</trans-unit>
+			<trans-unit id="error.Comment.createAction">
+				<source>Could not create your comment.</source>
+			</trans-unit>
+			<trans-unit id="error.code.1221560718">
+				<source>The &lt;strong&gt;%s&lt;/strong&gt; field must not be empty!</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
