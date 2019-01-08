@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="tx_ncusefulpages_domain_model_page">
+				<target state="translated">Notation de la page</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_i_d">
+				<target state="translated">ID de la page notée</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_u_r_l">
+				<target state="translated">URL de la page notée</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_title">
+				<target state="translated">Titre de la page notée</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_parameters">
+				<target state="translated">Paramètres du plugin affiché sur la page</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.useful">
+				<target state="translated">Oui, utile</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.notUseful">
+				<target state="translated">Non, pas utile</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.undecided">
+				<target state="translated">Indécis</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.comments">
+				<target state="translated">Commentaires</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment">
+				<target state="translated">Commentaire sur le contenu</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.rating">
+				<target state="translated">Notation</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.content">
+				<target state="translated">Contenu</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_name">
+				<target state="translated">Nom de l'auteur</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_email">
+				<target state="translated">E-mail de l'auteur</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

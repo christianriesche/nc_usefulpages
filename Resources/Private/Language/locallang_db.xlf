@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="tx_ncusefulpages_domain_model_page">
+				<source>Page Rating (Useful Pages)</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_i_d">
+				<source>ID of the page being rated</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_u_r_l">
+				<source>URL of the page being rated</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_title">
+				<source>Title of the page being rated</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_parameters">
+				<source>Parameters of plugins shown on the page</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.useful">
+				<source>Useful</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.notUseful">
+				<source>Not useful</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.undecided">
+				<source>Undecided</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.comments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment">
+				<source>Comment (Useful Pages)</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.content">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_name">
+				<source>The author's name</source>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_email">
+				<source>The author's e-mail address</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

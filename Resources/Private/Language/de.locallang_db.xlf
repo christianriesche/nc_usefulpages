@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-08T10:52:26Z" product-name="nc_usefulpages">
+		<header/>
+		<body>
+			<trans-unit id="tx_ncusefulpages_domain_model_page">
+				<target state="translated">Beoordeelde pagina (Useful Pages)</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_i_d">
+				<target state="translated">Pagina ID</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_u_r_l">
+				<target state="translated">Pagina URL</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_title">
+				<target state="translated">Pagina titel</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.page_parameters">
+				<target state="translated">Pagina plugin parameters</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.useful">
+				<target state="translated">Nuttig</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.notUseful">
+				<target state="translated">Niet nuttig</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.undecided">
+				<target state="translated">Onbeslist</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_page.comments">
+				<target state="translated">Commentaren</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment">
+				<target state="translated">Commentaar (Useful Pages)</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.rating">
+				<target state="translated">Beoordeling</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.content">
+				<target state="translated">Inhoud</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_name">
+				<target state="translated">De naam van de auteur</target>
+			</trans-unit>
+			<trans-unit id="tx_ncusefulpages_domain_model_comment.author_email">
+				<target state="translated">De e-mail adres van de auteur</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

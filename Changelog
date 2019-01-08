@@ -1,3 +1,11 @@
+2019-01-08 2.1.1 Dmytro Nozdrin <public.team.osi@gmail.com>
+    * Fixed translations.
+    * Fixed f:translate ViewHelper obsolete property usage.
+    * Added change to the ChangeLog.
+
+2019-12-25 2.1.0 Dmytro Nozdrin <public.team.osi@gmail.com>
+    * Version for TYPO3 9.5 and 8.7.
+
 2017-11-21 2.0.0 Christian Riesche <christian.riesche@dmk-ebusiness.de>
     * Version for TYPO3 7.6 and 8.7.
 

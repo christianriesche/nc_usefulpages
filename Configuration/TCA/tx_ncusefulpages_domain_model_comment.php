@@ -3,7 +3,7 @@ defined('TYPO3_MODE') || die;
 
 return array(
     'ctrl' => array(
-        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment',
+        'title'             => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_comment',
         'label'				=> 'content',
         'tstamp'            => 'tstamp',
         'crdate'            => 'crdate',
@@ -25,7 +25,7 @@ return array(
     'columns' => array(
         'content' => array(
             'exclude' => 1,
-            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment.content',
+            'label'   => 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_comment.content',
             'config'  => array(
                 'type' => 'text',
                 'rows' => 15,
@@ -39,20 +39,20 @@ return array(
         ),
         'rating' => array(
             'exclude'		=> 0,
-            'label'			=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment.rating',
+            'label'			=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_comment.rating',
             'config'		=> array(
                 'type' 		=> 'select',
                 'items'		=> array(
                     array('-',
                         0), // Empty option despite 'eval'=>'required' to allow smooth transition without necessity of updating old records.
 
-                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.useful',
+                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.useful',
                         \Netcreators\NcUsefulpages\Controller\CommentController::RATING_USEFUL),
 
-                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.notUseful',
+                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.notUseful',
                         \Netcreators\NcUsefulpages\Controller\CommentController::RATING_NOT_USEFUL),
 
-                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_page.undecided',
+                    array('LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_page.undecided',
                         \Netcreators\NcUsefulpages\Controller\CommentController::RATING_UNDECIDED)
                 ),
                 'size' 		=> 1,
@@ -62,7 +62,7 @@ return array(
         ),
         'author_name' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment.author_name',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_comment.author_name',
             'config'	=> array(
                 'type' 	=> 'input',
                 'size' 	=> 30,
@@ -72,7 +72,7 @@ return array(
         ),
         'author_email' => array(
             'exclude'	=> 0,
-            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xml:tx_ncusefulpages_domain_model_comment.author_email',
+            'label'		=> 'LLL:EXT:nc_usefulpages/Resources/Private/Language/locallang_db.xlf:tx_ncusefulpages_domain_model_comment.author_email',
             'config'	=> array(
                 'type' 	=> 'input',
                 'size' 	=> 30,
